@@ -19,5 +19,5 @@ class HTTPServer {
     static HTTPServer* getInstance(const string& cert_path, const string& key_path);
 
     // Inicia el servidor en un puerto específico
-    void start(int startingPort)
+    void start(int startingPort);
 };
