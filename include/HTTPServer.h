@@ -1,23 +1,21 @@
 #pragma once
-#include <httplib.h> // Biblioteca para HTTP/HTTPS
-#include "FileManager.h"
-using namespace std;
+
+// Habilitar soporte SSL en cpp-httplib
+#define CPPHTTPLIB_OPENSSL_SUPPORT
+#include <httplib.h>
+#include <string>
 
 class HTTPServer {
+public:
+    // Obtiene la instancia singleton del servidor HTTPS
+    static HTTPServer* getInstance(const std::string& cert_path,
+                                   const std::string& key_path);
+    void start(int port);
 
-  private:
-    httplib::Server server; // Server HTTP (no SSL)
-    static HTTPServer* instance; // Patrón Singleton (Solo una insntancia, pues... ¿para que quedríamos más de una instancia en el mismo puerto?)
+private:
+    httplib::SSLServer server;
+    static HTTPServer* instance;
 
-    // Private constructor
-    HTTPServer(const string& cert_path, const string& key_path);
-
+    HTTPServer(const std::string& cert_path, const std::string& key_path);
     void setUpRoutes();
-
-  public:
-    //Obtener la única instancia del server
-    static HTTPServer* getInstance(const string& cert_path, const string& key_path);
-
-    // Inicia el servidor en un puerto específico
-    void start(int startingPort);
 };
