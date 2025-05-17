@@ -66,6 +66,13 @@
     "variant": "cpp",
     "expected": "cpp",
     "format": "cpp",
-    "semaphore": "cpp"
+    "semaphore": "cpp",
+    "bitset": "cpp",
+    "condition_variable": "cpp",
+    "csignal": "cpp",
+    "list": "cpp",
+    "unordered_set": "cpp",
+    "regex": "cpp",
+    "mutex": "cpp"
   }
 }

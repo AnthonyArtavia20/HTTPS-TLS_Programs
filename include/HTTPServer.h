@@ -6,10 +6,10 @@ using namespace std;
 class HTTPServer {
 
   private:
-    httplib::SSLServer server; // Server HTTPS usando OpenSSL
+    httplib::Server server; // Server HTTP (no SSL)
     static HTTPServer* instance; // Patrón Singleton (Solo una insntancia, pues... ¿para que quedríamos más de una instancia en el mismo puerto?)
 
-    // Constructor privado para Singleton
+    // Private constructor
     HTTPServer(const string& cert_path, const string& key_path);
 
     void setUpRoutes();

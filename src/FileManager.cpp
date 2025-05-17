@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-const string FileManager::UPLOAD_DIR = "../uploads/";
+const string FileManager::UPLOAD_DIR ="uploads/";
 
 //guarda un archivo en ./uploads/
 bool FileManager::saveFile(const string& filename, const string& content) {
@@ -29,7 +29,7 @@ vector<string> FileManager::listFiles() {
     while ((entry = readdir(dir)) != nullptr)
     {
       if (entry->d_type == DT_REG) { // Si es un archivo (no unna carpeta)
-        files.push_back(entry->d_name); //Agrega el nombre a la estructura
+        files.push_back(entry->d_name); //Agrega el nombre a la estructura, al vector... Esto es o que se mostrará al hacer /list
       }
     }
     closedir(dir); //cierra la carpeta
@@ -40,8 +40,8 @@ vector<string> FileManager::listFiles() {
   // Lee un archivo y devuelve su contenido como string
 string FileManager::readFile(const string& filename) {
   ifstream file(UPLOAD_DIR + filename, ios::binary);
-  if (!file) return ""; //Si no existe, retorna vacio.
-  // Lee todo el contenido
+  if (!file) return "El archivo no existe"; //Si no existe, retorna vacio.
+  // De lo contario lee todo el contenido
   return std::string(
       (std::istreambuf_iterator<char>(file)),
       std::istreambuf_iterator<char>()

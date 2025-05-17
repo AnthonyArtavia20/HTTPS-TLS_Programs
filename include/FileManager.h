@@ -12,7 +12,7 @@ class FileManager {
   public:
     static const string UPLOAD_DIR; // Carpeta donde se guardan los archivos (./uploads/)
 
-    // Guardar un archiivo. En caos de que el nombre del entrante sea el mismo a uno ya existente, entonces retorna flase.
+    // Guardar un archiivo. En caso de que el nombre del entrante sea el mismo a uno ya existente, entonces retorna flase.
     static bool saveFile(const string& filename, const string& content);
 
     // Hace un listado de todos los archivos subidos hasta el momento.

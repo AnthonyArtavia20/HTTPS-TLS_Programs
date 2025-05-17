@@ -3,14 +3,13 @@
 
 HTTPServer* HTTPServer::instance = nullptr; // Inicializa el Singleon
 
-// Constructor: Configurar el servidor HTTPS con los certificados planteados
-HTTPServer::HTTPServer(string& cert_path, const string& key_path) : server(cert_path.c_str(), key_path.c_str()) {
-  //se usa cert.pem y key.pem
-  setUpRoutes(); //Define las rutas.
+// Constructor: Configurar el servidor HTTPS con los certificados creados, el key y el cert .pem
+HTTPServer::HTTPServer(const std::string& cert_path, const std::string& key_path) {
+    setUpRoutes();
 }
 
 // Configura las rutas del servidor
-void HTTPServer::setupRoutes() {
+void HTTPServer::setUpRoutes() {
     // POST /upload -> Sube un archivo
     server.Post("/upload", [](const httplib::Request& req, httplib::Response& res) {
         auto file = req.get_file_value("file"); // Obtiene el archivo enviado

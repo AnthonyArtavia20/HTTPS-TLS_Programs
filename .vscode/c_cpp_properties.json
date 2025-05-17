@@ -8,7 +8,8 @@
                 "/usr/include",
                 "/usr/local/include",
                 "/usr/include/nlohmann",
-                "/usr/include/openssl"
+                "/usr/include/openssl",
+                "${workspaceFolder}/include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",
