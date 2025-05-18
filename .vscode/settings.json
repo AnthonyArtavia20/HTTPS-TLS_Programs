@@ -73,6 +73,7 @@
     "list": "cpp",
     "unordered_set": "cpp",
     "regex": "cpp",
-    "mutex": "cpp"
+    "mutex": "cpp",
+    "*.inc": "cpp"
   }
 }

@@ -1,5 +1,5 @@
 // Se encarga de almacenar los datos, pdfs, imágenes, etc
-// Además se encarga de listar y leer
+// Además se encarga de listar y leer contiene los métodos/funciones disponibles.
 
 #pragma once
 #include <string>
