@@ -66,16 +66,26 @@ Estas se realizan  en una terminal aparte de la del server, dentro de la carpeta
 > ```bash
 > curl -k -v -X POST -F "file=@ExamplesToUpload/archivo.txt" https://localhost:8443/upload
 > ```
+1. -k : confía en el certificado autofirmado generado.
+2.  -v : muestra por consola cada paso del handshake TLS y los headers HTTP, formando HTTPS.
+3. -X POST : Se usa POST para poder subir ficheros o archivos.
+4. -F "file=@..." : Construye un body multipart/form-data con el fichero en el campo file.
+5. URL : https//localhost:8443/upload este es nuestro endpoint que procesa la subida.
 
 - **Listar los archivos(/list):**
 
 > ```bash
 > curl -k -v https://localhost:8443/list
 > ```
+1.  No necesita -X GET  porque curl usa GET por defecto si no hay -d o -F
+2. Con -v se ve por consola GET /list HTTP/1.1 y el JSON que regresa el servidor.
 
 - **Descargar un archivo subido a la carpeta de carga(/download):**
 
 > ```bash
 > curl -k -v -OJ https://localhost:8443/download/archivo.txt
 > ```
+1.  -O : Guarda en disco con el nombre que se le de como argumento al final, es decir el del archivo.
+2. -J : Respeta el header Content-Disposition que genera el servidor para asegurar el nombre de descarga.
+
 ¡Soporta imágenes, pdfs, archivos de texto y más!
