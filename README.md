@@ -28,7 +28,7 @@ Todo esto sobre HTTPS, usando la librería [cpp-httplib](https://github.com/yhir
 2. Pulsa `Ctrl+Shift+B` para ejecutar la tarea **C/C++: g++ build project**. 
 Esto generará el ejecutable "server"
 
-#####Generar certificado (opcional)
+##### Generar certificado (opcional)
 En caso de requerir generar otro certificado y otra llave "cert.pem / key.pem" se puedes autogenerar otro par:
 > ```bash
 > openssl req -x509 -newkey rsa:4096 -nodes -keyout key.pem -out cert.pem -days 365 -subj "/C=CR/ST=SanJose/L=SanJose/O=MiOrg/OU=IT/CN=localhost"
@@ -40,7 +40,7 @@ En este ejemplo están incluidos solo con fines académicos.
 Añade siempre al .gitignore cualquier certificado, clave privada o binario generado.
 
 
-###Uso:
+### Uso:
 ## 💻 Instalación
 ### 1. Clonar el repositorio
 ```bash
@@ -52,7 +52,7 @@ cd HTTPS-TLS_Programs
 sudo apt install build-essential libssl-dev libnlohmann-json-dev
 ```
 
-####3. Inicia el servidor (por defecto en el puerto 8443):
+#### 3. Inicia el servidor (por defecto en el puerto 8443):
 Se realiza en una terminal propia para el server.
 > ```bash
 > -/server
