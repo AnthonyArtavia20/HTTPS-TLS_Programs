@@ -31,12 +31,15 @@ HTTPServer* HTTPServer::getInstance(const std::string& cert_path, const std::str
 void HTTPServer::setUpRoutes() {
     // POST /upload
     server.Post("/upload", [&](const httplib::Request& req, httplib::Response& res) {
+        cout << "Se ha solicitado cargar un archivo a la carpeta de carga" << endl;
         auto file_header = req.get_file_value("file"); // Para obtener la información necesaria del archivo, tal como el nombre y el contenido.
         bool ok = FileManager::saveFile(file_header.filename,file_header.content);
         if (ok) {
             res.set_content("{ \"success\": true }", "application/json");
+            cout << "Se ha logrado cargar exitosamente" << endl;
         } else {
             res.status = 500;
+            cout << "No se subió el archivo." << endl;
             res.set_content("{ \"success\": false }", "application/json");
         }
     });
@@ -52,13 +55,16 @@ void HTTPServer::setUpRoutes() {
     // GET /download/{filename}
     server.Get(R"(/download/(.+))", [&](const httplib::Request& req, httplib::Response& res) {
         std::string filename = req.matches[1]; // Obtiene el nombre del archivo ingresado por consola
+        cout << "Se ha solicitado un la descarga de un archivo en el server, el cual es: "<< filename << endl;
         std::string data = FileManager::readFile(filename); // Extrae el contenido del archivo guardado para poder crear un nuevo archivo intacto con el nombre y contenido del original.
-        if (data.empty()) {
+        if (data == "El archivo no existe") {
             res.status = 404;
             res.set_content("File not found", "text/plain");
-        } else {
+            cout << "No se le descargó al cliente, puesto que el arrchivo no tiene contenido." << endl;
+        } else { //Puede que el archivo esté vacío pero igual se envía y todo.
             res.set_header("Content-Disposition", "attachment; filename=" + filename);
             res.set_content(data, "application/octet-stream");
+            cout << "Archivo descargado exitosamente para el cliente" << endl;
         }
     });
 }

@@ -6,6 +6,7 @@
 #include <fstream> //Para poder escribir y leer sobre los archivos.
 #include <dirent.h> //Para leer los archivos en la carpeta de carga.
 #include <string>
+#include <iostream> //Para el cout
 using namespace std;
 
 const string FileManager::UPLOAD_DIR ="uploads/"; // Accedemos a la variable que guarda donde se guardan las cosas en el server.
@@ -19,8 +20,14 @@ bool FileManager::saveFile(const string& filename, const string& content) {
 
   // Abre el archivo en modo binario y escribe el contenido.
   ofstream file(UPLOAD_DIR + filename, std::ios::binary);
-  if (!file) return false; //error porque no hay archivo a abrir
-  file << content; //De lo contario le inyectamos a ese nuevo File en la carpeta de carga todo el contenido del archivo original
+  if (!file){
+    cout << "El archivo que el cliente está solicitando no existe o está mal escrito" << endl;
+    return false; //error porque no hay archivo a abrir
+  }
+  file.write(content.data(), content.size());//De lo contario le inyectamos a ese nuevo File en la carpeta de carga todo el contenido del archivo original
+  file.close();
+
+  cout << "Se ha logrado guardar el contenido en la carpeta de carga." << endl;
   return true;
 }
 
@@ -40,7 +47,7 @@ vector<string> FileManager::listFiles() {
     }
     closedir(dir); //cierra la carpeta cuando ya no hayan más entradas.
   }
-  files.push_back("La carpeta no existe");
+  files.push_back("La carpeta no existe o está vacía");
   return files; //En caso de que no haya carpeta de carga, se retorna la lista vacia
 }
 
