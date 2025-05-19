@@ -64,17 +64,18 @@ Estas se realizan  en una terminal aparte de la del server, dentro de la carpeta
 - **Subir archivos(/Upload):**
 
 > ```bash
-> curl -k -X POST -F "file=@./ruta/archivo.txt" https://localhost:8443/upload
+> curl -k -v -X POST -F "file=@ExamplesToUpload/archivo.txt" https://localhost:8443/upload
 > ```
 
 - **Listar los archivos(/list):**
 
 > ```bash
-> curl -k https://localhost:8443/list
+> curl -k -v https://localhost:8443/list
 > ```
 
 - **Descargar un archivo subido a la carpeta de carga(/download):**
 
 > ```bash
-> curl -k https://localhost:8443/download/archivo.txt -o archivo.txt
+> curl -k -v -OJ https://localhost:8443/download/archivo.txt
 > ```
+¡Soporta imágenes, pdfs, archivos de texto y más!
