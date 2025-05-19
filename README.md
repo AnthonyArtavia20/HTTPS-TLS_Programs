@@ -55,7 +55,7 @@ sudo apt install build-essential libssl-dev libnlohmann-json-dev
 #### 3. Inicia el servidor (por defecto en el puerto 8443):
 Se realiza en una terminal propia para el server.
 > ```bash
-> -/server
+> ./server
 > ```
 Verás este mensaje por consola: Servidor HTTPS iniciado en https://0.0.0.0:8443
 
