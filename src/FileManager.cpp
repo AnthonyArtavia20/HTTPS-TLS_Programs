@@ -46,8 +46,10 @@ vector<string> FileManager::listFiles() {
       }
     }
     closedir(dir); //cierra la carpeta cuando ya no hayan más entradas.
+  } else {
+    files.push_back("La carpeta no existe o está vacía");
   }
-  files.push_back("La carpeta no existe o está vacía");
+
   return files; //En caso de que no haya carpeta de carga, se retorna la lista vacia
 }
 
