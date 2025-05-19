@@ -31,7 +31,7 @@ Esto generará el ejecutable "server"
 ##### Generar certificado (opcional)
 En caso de requerir generar otro certificado y otra llave "cert.pem / key.pem" se puedes autogenerar otro par:
 > ```bash
-> openssl req -x509 -newkey rsa:4096 -nodes -keyout key.pem -out cert.pem -days 365 -subj "/C=CR/ST=SanJose/L=SanJose/O=MiOrg/OU=IT/CN=localhost"
+> openssl req -x509 -nodes -newkey rsa:2048 -keyout key.pem -out cert.pem -days 365 -subj "/C=CR/ST=SanJose/L=SanJose/O=MiOrg/OU=Dev/CN=localhost"
 > ```
 
 ##### Tener en cuenta que:
