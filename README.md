@@ -17,7 +17,7 @@ Todo esto sobre HTTPS, usando la librería [cpp-httplib](https://github.com/yhir
 
 ## ¿Cómo usar?
 
-###Consideraciones importantes antes de utilizar:
+### Consideraciones importantes antes de utilizar:
 > **Nota**: asegúrate de crear la carpeta `uploads/` antes de iniciar el servidor en caso de que no esté presente:
 > ```bash
 > mkdir -p uploads
@@ -73,7 +73,7 @@ Estas se realizan  en una terminal aparte de la del server, dentro de la carpeta
 > curl -k https://localhost:8443/list
 > ```
 
-- **Descargar un archivo subido a la carpeta de carga(/download): **
+- **Descargar un archivo subido a la carpeta de carga(/download):**
 
 > ```bash
 > curl -k https://localhost:8443/download/archivo.txt -o archivo.txt
