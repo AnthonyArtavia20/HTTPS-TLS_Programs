@@ -7,8 +7,8 @@
 #include <openssl/err.h>
 #include <openssl/x509v3.h>
 
-#define HOST "www.google.com"
-#define PORT "443"
+#define HOST "localhost"
+#define PORT "4433"
 
 int main() {
     //Inicializar OpenSSL
@@ -64,7 +64,7 @@ int main() {
     SSL_set_fd(ssl, sockfd);
 
     //Activar verificacion del certificado del servidor
-    SSL_set_verify(ssl, SSL_VERIFY_PEER, nullptr);
+    //SSL_set_verify(ssl, SSL_VERIFY_PEER, nullptr);
 
     // Inicar handshake TLS
     if (SSL_connect(ssl) !=1){
@@ -76,17 +76,8 @@ int main() {
         SSL_CTX_free(ctx);
         return 1;
     }
-
-    long verify_result = SSL_get_verify_result(ssl);
-    if (verify_result != X509_V_OK){
-        std::cerr << "Error de verificacion del certificado: " << X509_verify_cert_error_string(verify_result) << "\n";
-        SSL_free(ssl);
-        close(sockfd);
-        freeaddrinfo(res);
-        SSL_CTX_free(ctx);
-        return 1;
-    }
-
+    
+    
     //Verificar que el nombre del host coincida con el certificado
     X509* cert = SSL_get_peer_certificate(ssl);
     if (!cert) {
@@ -116,7 +107,7 @@ int main() {
     std::cout << "Conexion TLS establecida con " << HOST << "\n";
 
     //Enviar solicitud HTTP GET
-    const char* request = "GET / HPPT/1.1\nHost: www.google.com\r\nConnection: close\r\n\r\n";
+    const char* request = "GET / HTTP/1.1\nHost: localhost\r\nConnection: close\r\n\r\n";
     SSL_write(ssl, request, strlen(request));
 
     //Leer respuesta
