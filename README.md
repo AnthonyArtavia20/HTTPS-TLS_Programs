@@ -36,7 +36,7 @@ Para visualizar el código de cada programa:
 
 Puedes visualizarlo también en la siguiente imagen explicativa:
 
-![Exploración de ramas](./IMG/branches.png)  
+![Exploración de ramas](./IMG/branches.png)  ![Exploración de ramas](./IMG/downloadButton.png)  
 
 
 ---
