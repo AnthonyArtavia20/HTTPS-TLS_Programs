@@ -11,7 +11,7 @@ Este repositorio contiene dos programas sencillos que ilustran la **implementaci
 Este proyecto tiene como propósito:
 
 - ✅ **Explicar** los protocolos TLS y HTTPS y su importancia en la seguridad de sistemas.
-- ✅ **Aplicar** TLS en un programa que permite conectarse a google por medio de handshakes.
+- ✅ **Aplicar** TLS en un programa que permite establecer una conexión segura mediante handshakes hacía un servidor local.
 - ✅ **Aplicar** HTTPS en una aplicación cliente-servidor que permite cargar, consultar y descargar archivos almacenados.
 
 ---
@@ -22,8 +22,8 @@ El branch principal (`main`) **no contiene directamente el código fuente** de l
 
 | Programa                     | Rama (`branch`)           | Descripción                                                                 |
 |-----------------------------|---------------------------|-----------------------------------------------------------------------------|
-| 🔐 TLS – Cliente/Servidor   | [`TLS-Connection`](https://github.com/AnthonyArtavia20/HTTPS-TLS_Programs/tree/tls-implementation) | Comunicación segura usando TLS con sockets en C++. |
-| 🌐 HTTPS – Cliente Web      | [`HTTPS-Server`](https://github.com/AnthonyArtavia20/HTTPS-TLS_Programs/tree/https-implementation) | Uso de HTTPS para consumir APIs de forma segura.      |
+| 🔐 TLS – Cliente C++   | [`TLS-Connection`](https://github.com/AnthonyArtavia20/HTTPS-TLS_Programs/tree/tls-implementation) | Establece una conexión segura TLS con un servidor HTTPS local, usando OpenSSL. |
+| 🌐 HTTPS – Cliente/Servidor      | [`HTTPS-Server`](https://github.com/AnthonyArtavia20/HTTPS-TLS_Programs/tree/https-implementation) | Uso de HTTPS para permitir operaciones de carga, descarga  consulta de archivos.      |
 
 ---
 
